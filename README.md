@@ -25,9 +25,9 @@ Put the ARN for this role in ```lambda-config.js```. The ARN should look somethi
 Setup for development
 ---
 
-Run this command to fetch dependencies:
-
 ```
+git clone https://github.com/gbuesing/node-lambda-template.git
+cd node-lambda-template
 npm install
 ```
 
@@ -44,6 +44,15 @@ This will run the lambda on your local machine, filling the event object with va
 Script is configured in package.json scripts/run-local. 
 See [lambda-local](https://github.com/ashiina/lambda-local) for configuration options.
 
+
+Running unit tests
+---
+
+```
+npm test
+```
+
+Uses [Mocha](https://mochajs.org/) test framework.
 
 
 Deploy to AWS
