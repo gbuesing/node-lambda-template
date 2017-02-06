@@ -3,6 +3,8 @@ node-lambda-template
 
 A minimal template for creating AWS Lambda functions that run on Node.js. Includes scripts for running locally, unit testing and deploying.
 
+This project pulls together [Gulp](http://gulpjs.com/), [Mocha](https://mochajs.org/), [node-aws-lambda](https://github.com/ThoughtWorksStudios/node-aws-lambda) and [lambda-local](https://github.com/ashiina/lambda-local) to create a simple toolchain for development and deployment.
+
 
 Initial AWS setup
 ---
@@ -17,7 +19,7 @@ aws_secret_access_key = ABC123
 aws_access_key_id = ABC123
 ```
 
-You'll also need to create a role for your lambda, with ```AWSLambdaBasicExecutionRole``` policy attached. You can do this in Amazon Console > IAM > Roles.
+You'll also need to create a role for your lambda, with ```AWSLambdaBasicExecutionRole``` policy attached. You can do this in AWS Console > IAM > Roles.
 
 Put the ARN for this role in ```lambda-config.js```. The ARN should look something like: ```arn:aws:iam::123456789012:role/myRole```
 

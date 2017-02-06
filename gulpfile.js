@@ -1,3 +1,4 @@
+// this file taken verbaim from https://github.com/ThoughtWorksStudios/node-aws-lambda/blob/master/README.md#gulp-example
 var gulp = require('gulp');
 var zip = require('gulp-zip');
 var del = require('del');
