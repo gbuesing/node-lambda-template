@@ -19,6 +19,7 @@
     "mocha": "^3.2.0",
     "node-aws-lambda": "^0.1.8",
     "run-sequence": "^1.2.2",
+    "sinon": "^1.17.7",
     "winston": "^2.3.1"
   }
 }
