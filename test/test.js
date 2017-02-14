@@ -1,5 +1,10 @@
 var assert        = require('assert')
-    , lambdaLocal = require('lambda-local');
+    , lambdaLocal = require('lambda-local')
+    , winston     = require('winston')
+
+
+winston.level = 'warn'
+lambdaLocal.setLogger(winston)
 
 
 describe('helloWorld', function() {
