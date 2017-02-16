@@ -67,9 +67,12 @@ gulp deploy
 Deploy task uses values in ```lambda-config.js```. For details, see [node-aws-lambda](https://github.com/ThoughtWorksStudios/node-aws-lambda)
 
 
-Invoking deployed lambda via aws-cli
+Invoking deployed lambda
 ---
 
 ```
-aws lambda invoke --function-name helloWorld --payload '{"name": "Foo"}' /dev/stdout
+./scripts/run-remote.js
 ```
+
+Script grabs lambda info from lambda-config.js, and submits with event-samples/test.js as payload.
+
