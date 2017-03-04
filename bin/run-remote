@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+const AWS    = require('aws-sdk')
+    , config = require('../lambda-config')
+
+
+const payload = getPayload(process.argv[2])
+
+AWS.config.credentials = getAWSCredentials(config.profile)
+
+invokeRemoteLambda(config, payload, function(err, data) {
+  if (err) {
+    console.error(err, err.stack) // an error occurred
+  } else {
+    const logResult = decodeLogResult(data.LogResult)
+    console.log(logResult)
+    console.log(data.Payload)
+  }
+})
+
+
+// helpers
+
+function getPayload(path) {
+  if (path) {
+    return require('../' + path)
+  } else {
+    return {}
+  }
+}
+
+function getAWSCredentials(profile) {
+  return new AWS.SharedIniFileCredentials({profile: profile})
+}
+
+function invokeRemoteLambda(config, payload, callback) {
+  const lambda = new AWS.Lambda({region: config.region})
+
+  lambda.invoke({
+    FunctionName: config.functionName,
+    Payload: JSON.stringify(payload),
+    LogType: 'Tail'
+  }, callback)
+}
+
+function decodeLogResult(logResult) {
+  return (new Buffer(logResult, 'base64')).toString('utf8')
+}

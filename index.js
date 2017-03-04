@@ -1,6 +1,6 @@
 exports.handler = function(event, context, callback) {
-  var name = event.name || 'World'
-  var greeting = exports.getGreetingPrefix() + name
+  const name = event.name || 'World'
+  const greeting = exports.getGreetingPrefix() + name
   callback(null, {greeting: greeting})
 }
 

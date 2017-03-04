@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+
+const lambdaLocal = require('lambda-local')
+    , config      = require('../lambda-config')
+    , winston     = require('winston')
+
+
+setupLogger()
+
+const payload = getPayload(process.argv[2])
+
+invokeLocalLambda(config, payload, function(err, result) {
+  if (err) {
+    console.error(err, err.stack)
+  } else {
+    console.log(result)
+  }
+})
+
+
+// helpers
+
+function setupLogger() {
+  winston.level = 'warn'
+  lambdaLocal.setLogger(winston)
+}
+
+function getPayload(path) {
+  if (path) {
+    return require('../' + path)
+  } else {
+    return {}
+  }
+}
+
+function invokeLocalLambda(config, payload, callback) {
+  const lambdaFuncName = config.handler.split('.')[0]
+  const lambdaFunc = require('../' + lambdaFuncName + '.js')
+
+  lambdaLocal.execute({
+    event         : payload,
+    lambdaFunc    : lambdaFunc,
+    profilePath   : '~/.aws/credentials',
+    profileName   : config.profile,
+    lambdaHandler : config.handler.split('.')[1],
+    region        : config.region,
+    timeoutMs     : config.timeout,
+    callback      : callback
+  })
+}

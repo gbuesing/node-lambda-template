@@ -6,11 +6,13 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "local": "lambda-local -l index.js -e event-samples/test.js -t 10"
+    "local": "./bin/run-local event-samples/test.js",
+    "remote": "./bin/run-remote event-samples/test.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "aws-sdk": "^2.22.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-install": "^0.6.0",
