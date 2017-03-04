@@ -43,8 +43,6 @@ npm run local
 
 This will run the lambda on your local machine, filling the event object with values in event-samples/test.js. This allows you to test/debug the lambda code before deploying.
 
-Script gets lambda info from lambda-config.js, and invokes locally with event in event-samples/test.js.
-
 
 Running unit tests
 ---
@@ -73,6 +71,6 @@ Invoking deployed lambda
 npm run remote
 ```
 
-Script gets lambda info from lambda-config.js, and submits with event-samples/test.js as payload.
+Script gets lambda info from lambda-config.js, and invokes with event-samples/test.js as payload.
 
 
