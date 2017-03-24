@@ -10,5 +10,5 @@ module.exports = {
   timeout: 10,
   memorySize: 128,
   publish: true,
-  runtime: 'nodejs4.3',
+  runtime: 'nodejs6.10',
 }
